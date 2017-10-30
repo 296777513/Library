@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'//添加
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+//添加
+publish {
+    userOrg = 'knight'//bintray.com用户名
+    groupId = 'com.knight'//jcenter上的路径
+    artifactId = 'basetools'//项目名称
+    publishVersion = '0.0.2'//版本号
+    desc = 'this is a tools'//描述，不重要
+    //publications = 'maven' //  用于上传的publication名称列表。 默认值为['maven']，这是这个插件为你创建的一个publication。
+    website = 'https://github.com/296777513/Common'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    bintrayKey = '0e35550c9145602f043f4cb98f2a12b9a6bbb98f'
+    bintrayUser = 'knight' // 用于上传的用户名。
+    dryRun = 'false' // 如果设置为“true”，则将运行所有内容，但不会将包上传到bintray。 如果“false”，那么它将正常上传。
+}

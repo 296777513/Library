@@ -40,11 +40,11 @@ publish {
     userOrg = 'knight'//bintray.com用户名
     groupId = 'com.knight'//jcenter上的路径
     artifactId = 'basetools'//项目名称
-    publishVersion = '0.0.2'//版本号
+    publishVersion = '1.0.1'//版本号
     desc = 'this is a tools'//描述，不重要
-    //publications = 'maven' //  用于上传的publication名称列表。 默认值为['maven']，这是这个插件为你创建的一个publication。
+//    publications = 'maven' //  用于上传的publication名称列表。 默认值为['maven']，这是这个插件为你创建的一个publication。
     website = 'https://github.com/296777513/Common'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
     bintrayKey = '0e35550c9145602f043f4cb98f2a12b9a6bbb98f'
-    bintrayUser = 'knight' // 用于上传的用户名。
+    bintrayUser = '296777513' // 用于上传的用户名。
     dryRun = 'false' // 如果设置为“true”，则将运行所有内容，但不会将包上传到bintray。 如果“false”，那么它将正常上传。
 }

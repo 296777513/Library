@@ -79,7 +79,7 @@ public class BubblePopupWindow extends PopupWindow {
     /**
      * 设置显示的view
      *
-     * @param view
+     * @param view 气泡中需要显示的view
      */
     public void setBubbleView(View view) {
         bubbleView = new BubbleLayout(context);
@@ -117,9 +117,7 @@ public class BubblePopupWindow extends PopupWindow {
     }
 
     /**
-     * 是否显示虚拟键盘
-     *
-     * @param b
+     * @param b 是否显示虚拟键盘
      */
     public void setHideVirtualKey(boolean b) {
         isHideVirtualKey = b;
@@ -129,8 +127,8 @@ public class BubblePopupWindow extends PopupWindow {
     /**
      * 设置布局的大小
      *
-     * @param width
-     * @param height
+     * @param width  宽度
+     * @param height 高度
      */
     public void setParam(int width, int height) {
         mWidth = width;
@@ -165,11 +163,12 @@ public class BubblePopupWindow extends PopupWindow {
         mYOffset = yOffset;
     }
 
+
     /**
-     * 显示弹窗
-     *
-     * @param parent
-     * @param gravity
+     * @param parent       展示的view
+     * @param gravity      位置
+     * @param isMiddle     默认位置是否是中间
+     * @param bubbleOffset 偏移量
      */
     public void show(View parent, int gravity, boolean isMiddle, float bubbleOffset) {
         if (set != null) {
@@ -338,18 +337,14 @@ public class BubblePopupWindow extends PopupWindow {
 
 
     /**
-     * 测量高度
-     *
-     * @return
+     * @return 测量高度
      */
     public int getMeasureHeight() {
         return getContentView().getMeasuredHeight();
     }
 
     /**
-     * 测量宽度
-     *
-     * @return
+     * @return 测量宽度
      */
     public int getMeasuredWidth() {
         return getContentView().getMeasuredWidth();

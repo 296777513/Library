@@ -22,12 +22,12 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class PermissionAspectj {
     @Around("execution(@com.knight.basetools.annotation.Permission * *(..)) && @annotation(permission)")
-//在所有 有Permission的方法替换代码
+    //在所有 有Permission的方法替换代码
     public void aroundJoinPoint(final ProceedingJoinPoint joinPoint, final Permission permission) throws Throwable {
         final AppCompatActivity ac = (AppCompatActivity) BaseApplication.getAppContext().getCurActivity();
-        if (PermissionUtils.checkPermissions(ac, permission.value())) {
+        if (PermissionUtils.checkPermissions(ac, permission.value())) {//如果有权限，则直接执行原方法
             try {
-                joinPoint.proceed();//获得权限，执行原方法
+                joinPoint.proceed();
             } catch (Throwable e) {
                 e.printStackTrace();
             }

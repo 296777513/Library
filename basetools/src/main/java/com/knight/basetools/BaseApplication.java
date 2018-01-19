@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import java.util.HashMap;
 import java.util.Stack;
 
 /**
- * description
+ * 是用来记录Activity的栈
  *
  * @author liyachao
  * @date 2018/1/18
@@ -17,7 +16,6 @@ import java.util.Stack;
 public class BaseApplication extends Application {
     private static BaseApplication mApp;
     public Stack<Activity> store;
-    public HashMap<String, Object> mCurActivityExtra;
 
     public void onCreate() {
         super.onCreate();

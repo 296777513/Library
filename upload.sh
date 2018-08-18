@@ -23,6 +23,7 @@ then
     git add ./gradle.properties
     git commit -m "feature: upload version code $str"
 else
-    echo "SUCCESS~~~~"
+    echo "Failed~~~~ please wait~~"
     sed -i "" "s/${str}/${origin}/g" gradle.properties
+    ./gradlew clean build bintrayUpload -PbintrayUser=296777513 -PbintrayKey=0e35550c9145602f043f4cb98f2a12b9a6bbb98f -PdryRun=false
  fi

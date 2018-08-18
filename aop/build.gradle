@@ -31,7 +31,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 //    provided 'me.ele:lancet-base:1.0.4'
 //    implementation 'org.aspectj:aspectjrt:1.8.13'
-    implementation project(':basetools')
+//    implementation project(':basetools')
+    implementation 'com.knight:basetools:1.1.0'
+
 }
 //
 //aspectjx {

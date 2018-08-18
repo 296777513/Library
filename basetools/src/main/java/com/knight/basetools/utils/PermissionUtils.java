@@ -2,6 +2,7 @@ package com.knight.basetools.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,11 +10,12 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 /**
  * 6.0 运行时权限处理工具类。
@@ -35,7 +37,7 @@ public class PermissionUtils {
         requestPermissions(fragment, requestCode, permission, callback);
     }
 
-    public static void requestPermissionsResult(android.support.v4.app.Fragment fragment, int requestCode
+    public static void requestPermissionsResult(Fragment fragment, int requestCode
             , String[] permission, OnPermissionListener callback) {
         requestPermissions(fragment, requestCode, permission, callback);
     }
@@ -68,8 +70,8 @@ public class PermissionUtils {
                 } else if (object instanceof android.app.Fragment) {
                     ((android.app.Fragment) object).requestPermissions(deniedPermissions
                             .toArray(new String[deniedPermissions.size()]), requestCode);
-                } else if (object instanceof android.support.v4.app.Fragment) {
-                    ((android.support.v4.app.Fragment) object).requestPermissions(deniedPermissions
+                } else if (object instanceof Fragment) {
+                    ((Fragment) object).requestPermissions(deniedPermissions
                             .toArray(new String[deniedPermissions.size()]), requestCode);
                 } else {
                     mRequestCode = -1;
@@ -85,8 +87,8 @@ public class PermissionUtils {
         Context context;
         if (object instanceof android.app.Fragment) {
             context = ((android.app.Fragment) object).getActivity();
-        } else if (object instanceof android.support.v4.app.Fragment) {
-            context = ((android.support.v4.app.Fragment) object).getActivity();
+        } else if (object instanceof Fragment) {
+            context = ((Fragment) object).getActivity();
         } else {
             context = (Activity) object;
         }
@@ -173,7 +175,7 @@ public class PermissionUtils {
         }
 
         boolean isActivity = object instanceof android.app.Activity;
-        boolean isSupportFragment = object instanceof android.support.v4.app.Fragment;
+        boolean isSupportFragment = object instanceof Fragment;
         boolean isAppFragment = object instanceof android.app.Fragment;
 
         if (!(isActivity || isSupportFragment || isAppFragment)) {

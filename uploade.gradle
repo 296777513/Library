@@ -1,0 +1,51 @@
+apply plugin: 'com.novoda.bintray-release'//添加
+
+//readVersion() {
+//    Properties properties = new Properties()
+//    properties.load(new FileInputStream("gradle.properties"))
+//    println("===============")
+////    println properties.getProperty("TOOL_VERSION")
+//
+//}
+def getDataFromGradle(String name) {
+    Properties properties = new Properties()
+    def stream = new FileInputStream("gradle.properties")
+    properties.load(stream)
+    def value = properties.getProperty(name)
+    stream.close()
+    println("===============" + value)
+
+    value
+}
+//添加
+publish {
+    userOrg = 'knight'//bintray.com用户名
+    groupId = 'com.knight'//jcenter上的路径
+    artifactId = 'basetools'//项目名称
+    publishVersion = getDataFromGradle("TOOL_VERSION") //版本号
+//    publishVersion = readVersion() //版本号
+
+    desc = 'this is a tools'//描述，不重要
+//    publications = 'maven' //  用于上传的publication名称列表。 默认值为['maven']，这是这个插件为你创建的一个publication。
+    website = 'https://github.com/296777513/Common'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+    bintrayKey = '0e35550c9145602f043f4cb98f2a12b9a6bbb98f'
+    bintrayUser = '296777513' // 用于上传的用户名。
+    dryRun = 'false' // 如果设置为“true”，则将运行所有内容，但不会将包上传到bintray。 如果“false”，那么它将正常上传。
+}
+/**
+ * ./gradlew clean build bintrayUpload -PbintrayUser=296777513 -PbintrayKey=0e35550c9145602f043f4cb98f2a12b9a6bbb98f -PdryRun=false
+ */
+
+/**
+ * 如果没有这段代码，将不支持中文注释
+ */
+allprojects {
+    tasks.withType(Javadoc) {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
+}
+

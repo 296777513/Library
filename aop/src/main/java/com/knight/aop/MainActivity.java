@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.SystemClock;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.knight.basetools.annotation.Clickable;
 import com.knight.basetools.annotation.Permission;
-import com.knight.basetools.utils.PermissionUtils;
-
-import hugo.weaving.DebugLog;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -28,8 +24,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getName("li", "yachao");
-        Log.i(TAG, "onCreate");
+//        getName("li", "yachao");
+//        Log.i(TAG, "onCreate");
         mPhoneCallBtn = findViewById(R.id.button);
         mCameraBtn = findViewById(R.id.button1);
         mPhoneCallBtn.setOnClickListener(this);
@@ -60,7 +56,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
+
     @Permission(Manifest.permission.CAMERA)
+//    @Clickable(value = 2000)
     private void onCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 启动系统相机
         startActivityForResult(intent, 1);

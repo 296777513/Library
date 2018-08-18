@@ -14,9 +14,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.knight.basetools.utils.ToastUtil;
@@ -24,6 +21,10 @@ import com.knight.basetools.utils.ToastUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import static com.knight.basetools.tools.FileTool.getDataColumn;
 import static com.knight.basetools.tools.FileTool.isDownloadsDocument;

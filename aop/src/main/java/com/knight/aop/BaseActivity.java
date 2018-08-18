@@ -1,9 +1,11 @@
 package com.knight.aop;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 
 import com.knight.basetools.utils.PermissionUtils;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import hugo.weaving.DebugLog;
 
 /**
  * description
@@ -11,7 +13,7 @@ import com.knight.basetools.utils.PermissionUtils;
  * @author liyachao
  * @date 2018/1/19
  */
-
+@DebugLog
 public class BaseActivity extends AppCompatActivity {
 
     @Override

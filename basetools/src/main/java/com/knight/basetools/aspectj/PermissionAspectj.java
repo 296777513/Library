@@ -1,17 +1,20 @@
 package com.knight.basetools.aspectj;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import com.knight.basetools.BaseApplication;
+import com.knight.basetools.BaseApplication1;
 import com.knight.basetools.R;
 import com.knight.basetools.annotation.Permission;
+import com.knight.basetools.tools.ActivityUtils;
 import com.knight.basetools.utils.PermissionUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * description
@@ -24,7 +27,8 @@ public class PermissionAspectj {
     @Around("execution(@com.knight.basetools.annotation.Permission * *(..)) && @annotation(permission)")
     //在所有 有Permission的方法替换代码
     public void aroundJoinPoint(final ProceedingJoinPoint joinPoint, final Permission permission) throws Throwable {
-        final AppCompatActivity ac = (AppCompatActivity) BaseApplication.getAppContext().getCurActivity();
+        Log.i("liyachao", "start");
+        final AppCompatActivity ac = (AppCompatActivity) ActivityUtils.INSTANCE.getCurActivity();
         if (PermissionUtils.checkPermissions(ac, permission.value())) {//如果有权限，则直接执行原方法
             try {
                 joinPoint.proceed();

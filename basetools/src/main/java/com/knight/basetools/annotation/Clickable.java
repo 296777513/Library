@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * description
+ * double click check
  *
  * @author liyachao
  * @date 2018/8/15

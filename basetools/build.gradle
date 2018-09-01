@@ -2,12 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 //apply plugin: 'com.jakewharton.hugo'
 //apply plugin: 'android-aspectjx'
-apply from: file('../uploade.gradle')
+//getDataFromGradle("SOURCE_DEPENDECY")
+if (!getDataFromGradle("SOURCE_DEPENDECY").toBoolean()) {
+    apply from: file('../uploade.gradle')
+}
 
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.1'
+    buildToolsVersion '28.0.2'
 
 
     defaultConfig {
@@ -44,6 +47,17 @@ dependencies {
     implementation 'org.aspectj:aspectjrt:1.8.9'
     implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.60'
+}
+
+
+def getDataFromGradle(String name) {
+    Properties properties = new Properties()
+    def file = file("local.properties")
+    file.withInputStream { stream ->
+        properties.load(stream)
+    }
+    def value = properties.getProperty(name)
+    value
 }
 
 //repositories {

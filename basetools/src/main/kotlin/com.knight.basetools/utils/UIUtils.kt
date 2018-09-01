@@ -13,17 +13,14 @@ import com.knight.basetools.tools.GlobalContext
  */
 object UIUtils {
 
-    fun getScreenHeight(context: Context?): Int {
-        return context?.resources?.displayMetrics?.heightPixels ?: 0
-    }
+    inline fun getScreenHeight(): Int = GlobalContext.context.resources.displayMetrics.heightPixels
+            ?: 0
 
-    fun getScreenWidth(context: Context?): Int {
-        return context?.resources?.displayMetrics?.widthPixels ?: 0
-    }
+    inline fun getScreenWidth(): Int = GlobalContext.context.resources.displayMetrics.widthPixels
+            ?: 0
 
-    fun dip2Px(dipValue: Float): Float {
-        return dipValue / GlobalContext.context.resources.displayMetrics.density + 0.5f
-    }
+
+    inline fun dip2Px(dipValue: Float): Float = dipValue / GlobalContext.context.resources.displayMetrics.density + 0.5f
 
     fun waitForMeasure(view: View, callBack: (View, Int, Int) -> Unit) {
         view.run {

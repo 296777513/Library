@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import android.util.Log
+import com.knight.basetools.module.MyAppGlideModule
 import com.knight.basetools.tools.ActivityUtils
 import com.knight.basetools.tools.GlobalContext
 import com.knight.basetools.tools.Tool

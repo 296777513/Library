@@ -14,7 +14,7 @@ import org.jetbrains.anko.AnkoLogger
  * @author liyachao
  * @date 2018/9/4
  */
-internal class CoroutineLifecycleListener(private val deferred: Deferred<*>) : LifecycleObserver{
+internal class CoroutineLifecycleListener(private val deferred: Deferred<*>) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
@@ -22,6 +22,14 @@ internal class CoroutineLifecycleListener(private val deferred: Deferred<*>) : L
             deferred.cancel()
         }
     }
+}
+
+fun <T> LifecycleOwner.postDelay(delay: Long, block: suspend (T) -> Unit): Unit {
+    val deferred = async(context = UI) {
+        delay(delay)
+        block
+    }
+    lifecycle.addObserver(CoroutineLifecycleListener(deferred))
 }
 
 fun <T> LifecycleOwner.load(loader: suspend () -> T): Deferred<T> {

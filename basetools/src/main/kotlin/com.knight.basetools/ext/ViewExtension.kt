@@ -14,8 +14,9 @@ object TriggerTime {
     const val DELAY_TIME = 300
 }
 
-inline fun <T : View> T.clickWithAnimation(onClickListener: View.OnClickListener) = setOnClickListener {
-    if (clickEnable) {
+inline fun <T : View> T.clickWithAnimation(onClickListener: View.OnClickListener, isNeedCombo: Boolean = false) = setOnClickListener {
+    if (isNeedCombo || clickEnable) {
+        it.animate().cancel()
         it.animate().scaleX(0.8f).scaleY(0.8f).setDuration(80).withEndAction {
             it.animate().scaleX(1f).scaleY(1f).setDuration(80).start()
         }.start()
